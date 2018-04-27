@@ -12,11 +12,7 @@ func MACD(inputs []float64, short, long, signal int) ([][]float64, error) {
 		return nil, fmt.Errorf("not enough inputs")
 	}
 
-	/* macdLine := make([]float64, len(inputs)-offset)
-	signalLine := make([]float64, len(inputs)-offset)
-	hist := make([]float64, len(inputs)-offset) */
-
-	if short < 1 || long < 2 || long < short || signal < 1 {
+	if short < 1 || long < 2 || long < short || signal < 1 || signal > len(inputs)-long+1 {
 		return nil, fmt.Errorf("invalid params")
 	}
 
@@ -65,7 +61,7 @@ func MACD(inputs []float64, short, long, signal int) ([][]float64, error) {
 	}
 
 	return [][]float64{
-		macdLine[histogramDiff-1:],
+		macdLine[histogramDiff:],
 		signalLine,
 		histogramLine,
 	}, nil

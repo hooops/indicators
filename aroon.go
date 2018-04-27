@@ -31,7 +31,7 @@ func Aroon(highs []float64, lows []float64, period int) ([][]float64, error) {
 		lowsWindow.PushBack(lows[i])
 		highsWindow.PushBack(highs[i])
 
-		if i <= offset {
+		if i < offset {
 			continue
 		}
 
@@ -40,8 +40,8 @@ func Aroon(highs []float64, lows []float64, period int) ([][]float64, error) {
 			Aroon-Down = ((Period - Days Since Period Low)/14) x 100
 		*/
 
-		aroonDown[i-period] = (float64(lowsWindow.MinPosition()) / 14) * 100
-		aroonUp[i-period] = (float64(highsWindow.MinPosition()) / 14) * 100
+		aroonDown[i-offset] = (float64(lowsWindow.MinPosition()) / 14) * 100
+		aroonUp[i-offset] = (float64(highsWindow.MinPosition()) / 14) * 100
 
 	}
 

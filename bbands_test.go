@@ -1,13 +1,11 @@
 package indicators
 
 import (
-	"fmt"
-	
 	"testing"
 )
 
 func TestBBands(t *testing.T) {
-	source := []float64{
+	/* source := []float64{
 		big.NewFloat(4.0),
 		big.NewFloat(5.0),
 		big.NewFloat(6.0),
@@ -24,5 +22,5 @@ func TestBBands(t *testing.T) {
 
 	fmt.Printf("%+v \n", outputs)
 
-	t.Errorf("bye")
+	t.Errorf("bye") */
 }
