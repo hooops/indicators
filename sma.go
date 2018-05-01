@@ -3,7 +3,6 @@ package indicators
 import (
 	"bitbonk/utils"
 	"errors"
-	"fmt"
 )
 
 //SMA Simple Moving Average
@@ -27,16 +26,12 @@ func SMA(inputs []float64, period int) ([]float64, error) {
 
 	outputs := make([]float64, len(inputs)-offset)
 
-	fmt.Println("output len", len(inputs), len(outputs))
-
 	for i, curInput := range inputs {
 		window.PushBack(curInput)
 
 		if i < offset {
 			continue
 		}
-
-		fmt.Println("i", i)
 
 		outputs[i-offset] = window.Mean()
 	}

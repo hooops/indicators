@@ -3,7 +3,6 @@ package indicators
 import (
 	"bitbonk/utils"
 	"errors"
-	"fmt"
 )
 
 //EMA Calculate Exponential Moving Average for a given set of inputs
@@ -23,8 +22,6 @@ func EMA(inputs []float64, period int) ([]float64, error) {
 	offset := period - 1
 
 	multiplier := 2.0 / float64(period+1)
-
-	fmt.Println("multiplier", multiplier)
 
 	window := utils.NewSliceWindow(period)
 
