@@ -1,8 +1,9 @@
 package indicators
 
 import (
-	"bitbonk/utils"
 	"errors"
+
+	"github.com/technicalviking/sliceWindow"
 )
 
 //Aroon port of Aroon indicator from tulipindicators c lib.
@@ -24,8 +25,8 @@ func Aroon(highs []float64, lows []float64, period int) ([][]float64, error) {
 	aroonDown := make([]float64, len(lows)-offset)
 	aroonUp := make([]float64, len(lows)-offset)
 
-	lowsWindow := utils.NewSliceWindow(period)
-	highsWindow := utils.NewSliceWindow(period)
+	lowsWindow := sliceWindow.New(period)
+	highsWindow := sliceWindow.New(period)
 
 	for i := 0; i < inputLength; i++ {
 		lowsWindow.PushBack(lows[i])

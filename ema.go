@@ -1,7 +1,7 @@
 package indicators
 
 import (
-	"bitbonk/utils"
+	"github.com/technicalviking/sliceWindow"
 	"errors"
 )
 
@@ -23,7 +23,7 @@ func EMA(inputs []float64, period int) ([]float64, error) {
 
 	multiplier := 2.0 / float64(period+1)
 
-	window := utils.NewSliceWindow(period)
+	window := sliceWindow.New(period)
 
 	outputs := make([]float64, len(inputs)-offset)
 

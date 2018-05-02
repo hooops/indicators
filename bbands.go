@@ -1,9 +1,10 @@
 package indicators
 
 import (
-	"bitbonk/utils"
 	"fmt"
 	"math"
+
+	"github.com/technicalviking/sliceWindow"
 )
 
 //BBands port of bband indicator from tulipindicators c lib.
@@ -27,7 +28,7 @@ func BBands(inputs []float64, period int, multiplier float64) ([][]float64, erro
 		make([]float64, outputLength), //upper
 	}
 
-	window := utils.NewSliceWindow(period)
+	window := sliceWindow.New(period)
 
 	for inputIndex, curInput := range inputs {
 		window.PushBack(curInput)

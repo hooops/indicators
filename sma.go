@@ -1,8 +1,9 @@
 package indicators
 
 import (
-	"bitbonk/utils"
 	"errors"
+
+	"github.com/technicalviking/sliceWindow"
 )
 
 //SMA Simple Moving Average
@@ -22,7 +23,7 @@ func SMA(inputs []float64, period int) ([]float64, error) {
 
 	offset := period - 1
 
-	window := utils.NewSliceWindow(period)
+	window := sliceWindow.New(period)
 
 	outputs := make([]float64, len(inputs)-offset)
 
